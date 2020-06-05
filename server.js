@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static("client/build"));
 
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, public))
+    res.sendFile(path.join(__dirname, "public"))
 })
 
 app.get("/api", function(req, res) {

@@ -1,0 +1,23 @@
+{
+  "name": "practice-stuff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanEllingson/practice-stuff.git"
+  },
+  "author": "ya boi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RyanEllingson/practice-stuff/issues"
+  },
+  "homepage": "https://github.com/RyanEllingson/practice-stuff#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

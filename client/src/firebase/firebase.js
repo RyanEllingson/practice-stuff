@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as firebase from "firebase/app";
+import setAuthToken from "../utils/setAuthToken";
 
 import "firebase/auth";
 
@@ -26,6 +27,7 @@ export function Firebase({ children }) {
         firebase.auth().signInWithPopup(provider).then(function(result) {
             console.log(result.user);
             setUser(result.user);
+            setAuthToken(result.user.uid);
         }).catch(function(error) {
             console.error(error);
         });
@@ -34,6 +36,7 @@ export function Firebase({ children }) {
     const signOut = function() {
         firebase.auth().signOut().then(function() {
             setUser(null);
+            setAuthToken(null);
         }).catch(function(error) {
             console.error(error);
         });

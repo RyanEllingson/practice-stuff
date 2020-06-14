@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "client", "build")));
 
 app.get("/api", function(req, res) {
+    console.log(req.headers.authorization);
     res.json({message: "The button worked!"});
 });
 

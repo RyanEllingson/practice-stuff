@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { FirebaseContext } from "../firebase/firebase";
 import axios from "axios";
 import { Container, Grid, Button, Paper } from "@material-ui/core";
 
 const Content = function() {
+    const { user, googleSignIn, signOut } = useContext(FirebaseContext);
+
     const [message, setMessage] = useState("Click the button to change message");
 
     const handleClick = function(event) {
@@ -11,7 +14,17 @@ const Content = function() {
         .then(function(response) {
             setMessage(response.data.message);
         })
-    }
+    };
+
+    const handleSignIn = function(event) {
+        event.preventDefault();
+        googleSignIn();
+    };
+
+    const handleSignOut = function(event) {
+        event.preventDefault();
+        signOut();
+    };
 
     return (
         <Container>
@@ -25,7 +38,8 @@ const Content = function() {
                 <Button variant="contained" onClick = {(e) => {handleClick(e)}}>Click me!</Button>
             </Grid>
         </Grid>
-            
+        {user ? <h1>Hello {user.displayName}</h1> : ""}
+        {user ? <button onClick={(e)=>{handleSignOut(e)}}>Sign out</button> : <button onClick={(e)=>handleSignIn(e)}>Sign in</button>}
             
         </Container>
     )
